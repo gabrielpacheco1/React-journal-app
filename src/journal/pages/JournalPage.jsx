@@ -25,8 +25,6 @@ export const JournalPage = () => {
           ? <NoteView/>
           : <NothingSelectedView />
       }
-      {/* <NothingSelectedView /> */}
-      {/* <NoteView/> */}
 
       <IconButton
         disabled= {isSaving}
