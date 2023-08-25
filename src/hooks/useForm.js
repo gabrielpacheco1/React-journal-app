@@ -14,6 +14,12 @@ export const useForm = (initialForm= {}, formValidations= {}) => {
 
     // const {username, email, password}= formState //No tiene sentido porque es muy especifica (no va a servir con todos los formularios)
 
+    useEffect(() => {
+        
+        setFormState(initialForm)
+
+    }, [initialForm]);
+
     const isFormValid= useMemo(() => {
 
         for (const formValue of Object.keys(formValidation)) {
