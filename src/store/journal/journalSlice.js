@@ -47,8 +47,9 @@ export const journalSlice = createSlice({
       state.messageSaved= `"${action.payload.title}" actualizada correctamente`
       //No disparar el sweetAlert acá porque un reducer no debe realizar eso
     },
-    deleteNote: (state, action) => {
-      
+    setPhotosToActiveNote: (state, action) => {
+      state.active.imageUrls= [...state.active.imageUrls, ...action.payload]
+      state.isSaving= false
     },
     deleteNoteById: (state, action) => {
       
@@ -63,6 +64,7 @@ export const {
   deleteNoteById, 
   setActiveNote,
   setNotes,
+  setPhotosToActiveNote,
   setSaving,
   updateNote,
 } = journalSlice.actions

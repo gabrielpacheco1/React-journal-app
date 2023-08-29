@@ -9,7 +9,7 @@ import 'sweetalert2/dist/sweetalert2.css'
 import { useForm } from '../../hooks/useForm'
 import { ImageGallery } from '../components/ImageGallery'
 import { setActiveNote } from '../../store/journal/journalSlice'
-import { startSaveNote } from '../../store/journal/thunks'
+import { startSaveNote, startUploadingFiles } from '../../store/journal/thunks'
 
 export const NoteView = () => {
 
@@ -33,7 +33,7 @@ export const NoteView = () => {
     if(target.files === 0) return
 
     console.log('subiendo archivos')
-    // dispatch(startUploadingFiles(target.files))
+    dispatch(startUploadingFiles(target.files))
   }
   
   const fileInputRef = useRef()
@@ -114,4 +114,3 @@ export const NoteView = () => {
     </Grid>
   )
 }
-
