@@ -5,6 +5,7 @@ export const journalSlice = createSlice({
   initialState: {
     isSaving: false,
     messageSaved: '',
+    messageDeleted: '',
     notes: [],
     active: null,
     // active: {
@@ -26,6 +27,7 @@ export const journalSlice = createSlice({
     setActiveNote: (state, action) => {
       state.active= action.payload
       state.messageSaved= ''
+      state.messageDeleted= ''
     },
     setNotes: (state, action) => {
       state.notes= action.payload
@@ -34,6 +36,7 @@ export const journalSlice = createSlice({
       state.isSaving= true
       //TODO: mensaje de error
       state.messageSaved= ''
+      state.messageDeleted= ''
     },
     updateNote: (state, action) => { //payload: note
       state.isSaving= false
@@ -54,11 +57,14 @@ export const journalSlice = createSlice({
     clearNotesLogout: (state) => {
       state.isSaving= false
       state.messageSaved= ''
+      state.messageDeleted= ''
       state.notes= []
       state.active= null
     },
     deleteNoteById: (state, action) => {
-      
+      state.active= null
+      state.messageDeleted= `"${action.payload.title}" borrada correctamente`
+      state.notes= state.notes.filter(note => note.id !== action.payload.id)
     },
   },
 })
